@@ -1,3 +1,33 @@
 ##create a folder terraform-project in desktop of your windows rdp machine
   #open visual studio code click on file open folder select desktop and select terraform-project
   ##once done click on again in file select Auto Save option
+#new by your project there is an + sign click on that it will allow you to create a file resource.tf extension should be tf. 
+###we want to create an resource group using terrafrom. 
+#we will open the terraform documentation copy the resource group code as it . 
+#copy line number 8 till 11 and change my name to your name.
+resource "azurerm_resource_group" "my-rg" {
+  name     = "gopal-rg"
+  location = "eastus"
+}
+#creat another file provider.tf copy line 13 till 25
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=5.0.0"
+    }
+  }
+}
+
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
+}
+
+##once done click on ... at the visual studio code
+#terminal-new terminal
+terraform init
+terraform validate
+##finally do 
+terraform plan
+
