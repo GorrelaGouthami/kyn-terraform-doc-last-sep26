@@ -1,0 +1,12 @@
+##this service principal will be generated from azure cloud only. 
+  ##on top of azure portal extremet right near by COPILOT icon you will see a terminal icon cloud shell
+  #select bash no storage account----select your subscription and apply
+  ##in the terminal we need to run a command change gopalad to your name 
+  ###in azure portal search for subscription
+  ##copy this whole command in a notepad and replace the subscription to your subscription
+  az ad sp create-for-rbac -n "gopalAD" --role contributor --scope /subscriptions/def2cf32-c635-4684-ad00-5703dbddbe44
+
+  #finally whatever output you will get save it in a notepad for next five days
+  
+
+  
