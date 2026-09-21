@@ -30,4 +30,23 @@ terraform init
 terraform validate
 ##finally do 
 terraform plan
+##lets rectify the authentication issue we will pass all the environment varaibles copy this line 34 till 37 in notepad
+$env:ARM_CLIENT_ID = ""
+$env:ARM_CLIENT_SECRET = ""
+$env:ARM_TENANT_ID = ""
+$env:ARM_SUBSCRIPTION_ID = ""
 
+
+###
+
+clientid==appid 
+clientsecret=password
+tenantid 
+subscriptionid
+
+#once done 
+terraform init -upgrade
+terraform plan
+###finally do
+terraform apply
+#this will create the resource group serach for resource group in azure portal and you can see it
