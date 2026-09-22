@@ -1,7 +1,6 @@
 #before this do terraform destroy
-  
-###lets create a file generic-varaibles.tf copy from line 2 till 36
-  variable "project_name" {
+  #create a file generic-varaibles.tf inside the file copy line 3 till 35 also in resource_group_name change my name to your name 
+variable "project_name" {
   description = "project name"
   type = string
   default = "kyn-project"
@@ -10,7 +9,7 @@
 variable "environment" {
   description = "Environment Name"
   type = string
-  default = "dev"
+  default = "dev" #test prod
 }
 
 variable "resource_group_name" {
@@ -34,3 +33,53 @@ variable "web_subnet_address" {
   type = list(string)
   default = [ "10.0.1.0/24" ]
 }
+
+###create a file local.tf copy line 39 till 49
+#any local block start with locals
+locals {
+    #name_prefix it is concation of two variables. 
+  name_prefix = "${var.project_name}-${var.environment}"
+  #kyn-project-dev
+  project_tags = { #this project tag is your name 
+    Project = var.project_name
+    Environment = var.environment
+    Managedby = "Terraform"
+
+  }
+}
+
+##go to resource.tf and delete everything copy line 52 till 58
+resource "azurerm_resource_group" "my-rg" { #my-rf is the refrence block
+  name     = "${local.name_prefix}-${var.resource_group_name}"
+  #kyn-project-dev-rg-gopal
+  #variable "resource_group_name" it will pick up the default value
+  location = var.resource_group_location
+  tags = local.project_tags
+}
+
+#in vnet.tf delete everything copy from line 61 till 68
+resource "azurerm_virtual_network" "vnet" {
+  name                = "${local.name_prefix}-${var.resource_group_name}-vnet"
+  #this vnet need location and resource group
+  location            = azurerm_resource_group.my-rg.location
+  resource_group_name = azurerm_resource_group.my-rg.name
+  address_space       = var.vnet_address_space
+  tags = local.project_tags
+}
+
+
+
+#in publis-subnet.tf delete everything 
+resource "azurerm_subnet" "web-subnet" {
+  name                 = "${local.name_prefix}-${var.resource_group_name}-web-subnet"
+  resource_group_name  =  azurerm_resource_group.my-rg.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = var.web_subnet_address
+  
+}
+
+#exercise
+1. do terraform plan check the name of the vnet subnet and resource group
+2. once resource is create go to the portal check the name match or not
+
+
