@@ -26,6 +26,7 @@
 }
 
 #exercises
+1.1 change the windows size to Standard_F2
   1. line number 4 5 6 copy from linux vm.tf file and replace the same. 
 2. in line 12 you need to put your nic card refrence
 3. in source image refrence you need to change the publisher offer sku and put that of your windows11 machine Source image details 
