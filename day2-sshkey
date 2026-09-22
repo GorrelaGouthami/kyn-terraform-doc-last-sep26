@@ -1,0 +1,6 @@
+##in the terminal create a directory and generate the ssh key in the current directory
+  25 mkdir ssh-keys                                                                                                       
+  26 cd .\ssh-keys\   
+  #just press enter enter it will generate the key do not give any pass phare
+  27 ssh-keygen -m PEM -t rsa -b 4096 -C "azureuser@myserver" -f terraform-azure.pem                                      
+  28 cd ..                                                                             
