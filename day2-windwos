@@ -36,4 +36,5 @@
 8. run terraform destroy 
 9. disable the windows machine inside winvm.tf file at the starting put /*  */
 10. terrform destroy then reapply terraform. you will get your linux machine
+11. if you want to destroy only a specific object terraform destroy -target="azurerm_linux_virtual_machine.web-vm"
   
