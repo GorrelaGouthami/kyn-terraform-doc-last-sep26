@@ -1,0 +1,15 @@
+#lets display the output
+  #create a new file output.tf copy from line 3 till 12
+  output "resource_group_name" {
+  description = "this is the name of the resource group"
+  value = azurerm_resource_group.my-rg.name
+  #state file
+}
+
+output "vnet_name" {
+  description = "this is the name of the vnet"
+  value = azurerm_virtual_network.vnet.name
+}
+
+##then do terraform apply
+  ##you can see at the end it is showing rg name and vnet name
