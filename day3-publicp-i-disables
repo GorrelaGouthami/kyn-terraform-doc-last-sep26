@@ -1,0 +1,10 @@
+##go to the public-ip.tf file
+  #in the starting put /*  endof the line  put */
+  ##then go to nic.tf #there is an refrence to public ip in the starting just put #
+ # public_ip_address_id =  azurerm_public_ip.web_vm_publicip[each.key].id
+#also in vm.tf disable the public ip
+   on vm.tf line 45, in output "vm_details":
+#public_ip =  azurerm_public_ip.web_vm_publicip[name].ip_address
+
+  ##after this do terraform apply 
+  ##then check your instance for the public ip using azure console click on the vm you will not see any public ip allocated
