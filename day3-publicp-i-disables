@@ -6,5 +6,6 @@
    on vm.tf line 45, in output "vm_details":
 #public_ip =  azurerm_public_ip.web_vm_publicip[name].ip_address
 
-  ##after this do terraform apply 
+  ##after this do terraform destroy
+##then do terraform apply
   ##then check your instance for the public ip using azure console click on the vm you will not see any public ip allocated
