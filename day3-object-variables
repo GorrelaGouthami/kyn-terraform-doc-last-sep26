@@ -45,3 +45,75 @@ output "public_ip_vm" {
   ###then do terraform apply
   ##once applied look inside your resource group in the azure console you will see two public create click on first public ip it will be az1 click on the second public ip it will be az2
 
+#lets modify the nic.tf file delete everything and copy from line 49 to 62
+resource "azurerm_network_interface" "web_nic" {
+  for_each = var.instance
+  name = "${local.name_prefix}-${var.resource_group_name}-${each.key}-nic"
+  #this vnet need location and resource group
+  location            = azurerm_resource_group.my-rg.location
+  resource_group_name = azurerm_resource_group.my-rg.name
+ #nic is something called as ip configuration
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.web-subnet.id #this will allocate private ip 
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id =  azurerm_public_ip.web_vm_publicip[each.key].id
+  }
+}
+#10.0.1.0/24 az1 az2 az3 internal to the vpc vpc az1 az2 az3
+
+#lets replace the same in vm.tf file delete everything copy from line 66 till 115
+resource "azurerm_linux_virtual_machine" "web-vm" {
+  for_each = var.instance
+  name = "${local.name_prefix}-${var.resource_group_name}-${each.key}-web-vm"
+  #this vnet need location and resource group
+  location            = azurerm_resource_group.my-rg.location
+  resource_group_name = azurerm_resource_group.my-rg.name
+  size                = each.value.vm_size 
+  zone = each.value.availability_zone
+  admin_username      = "azureuser"
+  network_interface_ids = [
+    azurerm_network_interface.web_nic[each.key].id,
+  ]
+
+  admin_ssh_key {
+    username   = "azureuser"
+    public_key = file("${path.module}/ssh-keys/terraform-azure.pem.pub")
+    #this is an pre-define meta argument in terraform path.module will always look for the file in current directory 
+    #public_key = file("C:\Users\gopal\OneDrive\Desktop\terraform-project\ssh-keys\terraform-azure.pem")
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "server"
+    version   = "latest"
+  }
+  custom_data = filebase64("${path.module}/app.sh")
+}
+
+#Standard Fasv7 Family vCPUs
+
+output "vm_details" {
+  description = "all the vm details"
+  value = {
+    for name, vm in azurerm_linux_virtual_machine.web-vm : name => {
+      vm_id = vm.id 
+      vm_name = vm.name 
+      zone = vm.zone
+      private_ip =  azurerm_network_interface.web_nic[name].private_ip_address
+      public_ip =  azurerm_public_ip.web_vm_publicip[name].ip_address
+    }
+    
+
+  }
+}
+
+#exercise
+1. once all the instance launched you can see the public ip in your terraform console copy the public ip paste it in the browser you will see the test page and private ip match it with your instance web1 same you need to do for wbe2
+2. go to your resource group and check there are two instance web1 create in az1 web2 created in az2
