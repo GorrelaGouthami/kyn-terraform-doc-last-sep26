@@ -1,0 +1,20 @@
+terraform destroy
+#before this we need to delete some files and folder
+  .terraform
+  terraform.tfstate
+  terraform.tfstate.backup
+  ###once deleted create a new file backend.tf copy from line 7 till 14
+  terraform {
+  backend "azurerm" {
+    resource_group_name = "replace this with your terraform storage resource group"
+    storage_account_name = "replace this with your storage account name"
+    container_name = "tfstate"
+    key = "kyn-project-dev.tfstate"
+  }
+}
+
+##again run terraform init
+  terraform plan
+  terraform apply
+  ####once applied you will not see the state file in your local machine
+  ###go to the storage account inside tfstate container a file will be create with the name kyn-project-dev.tfstate
