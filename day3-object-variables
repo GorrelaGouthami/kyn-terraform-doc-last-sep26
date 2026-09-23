@@ -1,0 +1,47 @@
+#first we need to terraform destroy
+#create an instance-varaibles.tf file copy from line 2 till 21
+  variable "instance" {
+  description = "map of azure vm instance"
+  type = map(object({
+    vm_size = string
+    availability_zone = string 
+    subnet_id = string  
+  }))
+default = {
+  "web1" = {
+    vm_size = "Standard_F2as_v7"
+    availability_zone = "1"
+    subnet_id = "web"
+  }
+  "web2" = {
+    vm_size = "Standard_D2alds_v7"
+    availability_zone = "2"
+    subnet_id = "web"
+  }
+}
+}
+############################### no go to publicip.tf file delete everything paste this from line 24 till 41
+  resource "azurerm_public_ip" "web_vm_publicip" {
+  for_each = var.instance #default value web1 and web2
+  name = "${local.name_prefix}-${var.resource_group_name}-${each.key}-public-ip" #here i ll put each.key so that publicip will be create with unique name 
+  #this vnet need location and resource group
+  location            = azurerm_resource_group.my-rg.location
+  resource_group_name = azurerm_resource_group.my-rg.name
+  allocation_method   = "Static"
+  sku                 = "Standard"
+  tags                = local.project_tags
+  #when we are creating the public ip that time i am passing zone
+  #in the zone i have put each.value for_each varaibles each.value will get all the values
+  zones = [each.value.availability_zone] #this will create the public ip in different az
+  #when the public ip will be created it will be created in az1 az2
+}
+/*
+output "public_ip_vm" {
+  value = azurerm_public_ip.web_vm_publicip.ip_address
+}*/
+
+##go to vm.tf file starting /* and end of the line */
+  ##go to nic.tf starting put /* and end of the line */
+  ###then do terraform apply
+  ##once applied look inside your resource group in the azure console you will see two public create click on first public ip it will be az1 click on the second public ip it will be az2
+
