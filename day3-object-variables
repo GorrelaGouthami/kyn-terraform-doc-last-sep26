@@ -117,3 +117,6 @@ output "vm_details" {
 #exercise
 1. once all the instance launched you can see the public ip in your terraform console copy the public ip paste it in the browser you will see the test page and private ip match it with your instance web1 same you need to do for wbe2
 2. go to your resource group and check there are two instance web1 create in az1 web2 created in az2
+#exercise 1
+1. inside instance varaible add web3 and its values then do terraform apply it will create third instance go to azure portal you will see the third instance
+2. remove the third instance and do terraform apply go to the console the third instance will be deleted
