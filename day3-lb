@@ -72,3 +72,4 @@ resource "azurerm_network_interface_backend_address_pool_association" "nic_assoc
 1. terraform apply
 2. go back to your lb in the backend pool you will see the nic card
 3. copy the public ip of the lb and paste it in the browser you will see the traffic is moving from one instance to another
+4. inside instance_object.tf file add a new instance. do terraform apply. instance will be part of your lb . and backenbd pool
