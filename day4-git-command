@@ -89,6 +89,8 @@ git merge subtract
 #now in the main branch if you see calcy.py it contains the 4th line 
 cat calcy.py
 #finally push the change to remote
+git add calcy.py
+git commit -m "subtract function added"
 git push origin --all
 git reflog
 ###once push in the master branch check the calcy.py has the 4th line
