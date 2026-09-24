@@ -90,5 +90,6 @@ git merge subtract
 cat calcy.py
 #finally push the change to remote
 git push origin --all
+git reflog
 ###once push in the master branch check the calcy.py has the 4th line
 
