@@ -12,3 +12,24 @@ touch calcy.py
 git config --global user.name "gopal"
 git config --global user.email "gopal1409@gmail.com"
 git config --global --list
+#to start maning this code with git you need to intialized and intilzation happen in current directory
+git init
+####now you can run status this will show that the code is managed by git
+git status
+#lets add a new line in calcy.py
+echo "we are starting calcy application" > calcy.py
+git status
+git add calcy.py
+git commit -m "started calcy application"
+#lets add another line after our first commit
+echo "inside calcy app we are adding a new function called as divide" >> calcy.py
+cat calcy.py
+#status will show that the calcy.py has been modified
+git status
+##git diff will show the content modified
+git diff
+#any changes you do in the code and want to be visualized in remote repo do add commit 
+git add calcy.py
+git commit -m "added divide function"
+#git log will show all your commit so always give menaing message
+ git log
