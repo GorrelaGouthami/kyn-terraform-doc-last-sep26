@@ -49,4 +49,33 @@ git commit -m "testing my calcy project"
 #any changes you make in your local repo you need to push it also 
 git push origin main
 #once push refresh the repo you will see the third line 
-
+#####branching in git
+#git branch will show we are in which branch and how many branches we have
+  git branch
+#currently we are in main branch and calcy.py have three line
+  cat calcy.py
+#lets create a new branch
+git branch subtract
+git branch
+#to move to the new branch checkout 
+git checkout subtract
+#again git branch will show we are in which branch
+git branch
+#we will add a new line in subtract branch 
+cat calcy.py
+echo "adding subtract function" >> calcy.py
+#now the subtract branch have 4th line 
+cat calcy.py
+git status
+git add calcy.py
+#do a commit in subtract branch 
+git commit -m "added subtract function"
+git branch
+#if we move back to our main branch and check the file it has only three line 
+git checkout main
+cat calcy.py
+git branch
+##finally push this branch in github
+git push origin subtract
+git push origin --all
+##once push go to github and check the same
