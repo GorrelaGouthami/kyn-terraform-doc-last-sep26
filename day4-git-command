@@ -41,3 +41,12 @@ cat pathofthepublickey you will find in the output of the key
 ##copy the whole key 
 #go to github extreme right last icon at the top click on it seeting-click on it 
 #access menu you will find ssh and gpg key click on it add ssh key give a name and paste it 
+#we will add a new line 
+echo "testing my calcy project" >> calcy.py
+git status
+git add calcy.py
+git commit -m "testing my calcy project"
+#any changes you make in your local repo you need to push it also 
+git push origin main
+#once push refresh the repo you will see the third line 
+
