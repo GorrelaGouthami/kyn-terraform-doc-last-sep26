@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1236pt" height="152pt" viewBox="0.00 0.00 1236.00 152.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 148)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-148 1231.91,-148 1231.91,4 -4,4"/>
+<!-- azurerm_network_interface.web_nic -->
+<g id="node1" class="node">
+<title>azurerm_network_interface.web_nic</title>
+<polygon fill="none" stroke="black" points="1118.25,-144 896.63,-144 896.63,-108 1118.25,-108 1118.25,-144"/>
+<text xml:space="preserve" text-anchor="middle" x="1007.44" y="-121.8" font-family="sans-serif" font-size="14.00">azurerm_network_interface.web_nic</text>
+</g>
+<!-- azurerm_public_ip.web_vm_publicip -->
+<g id="node4" class="node">
+<title>azurerm_public_ip.web_vm_publicip</title>
+<polygon fill="none" stroke="black" points="455.98,-144 229.65,-144 229.65,-108 455.98,-108 455.98,-144"/>
+<text xml:space="preserve" text-anchor="middle" x="342.81" y="-121.8" font-family="sans-serif" font-size="14.00">azurerm_public_ip.web_vm_publicip</text>
+</g>
+<!-- azurerm_network_interface.web_nic&#45;&gt;azurerm_public_ip.web_vm_publicip -->
+<g id="edge1" class="edge">
+<title>azurerm_network_interface.web_nic-&gt;azurerm_public_ip.web_vm_publicip</title>
+<path fill="none" stroke="black" d="M896.28,-126C778.15,-126 591.01,-126 467.8,-126"/>
+<polygon fill="black" stroke="black" points="467.97,-122.5 457.97,-126 467.97,-129.5 467.97,-122.5"/>
+</g>
+<!-- azurerm_subnet.web&#45;subnet -->
+<g id="node6" class="node">
+<title>azurerm_subnet.web-subnet</title>
+<polygon fill="none" stroke="black" points="708.19,-94 534.75,-94 534.75,-58 708.19,-58 708.19,-94"/>
+<text xml:space="preserve" text-anchor="middle" x="621.47" y="-71.8" font-family="sans-serif" font-size="14.00">azurerm_subnet.web-subnet</text>
+</g>
+<!-- azurerm_network_interface.web_nic&#45;&gt;azurerm_subnet.web&#45;subnet -->
+<g id="edge2" class="edge">
+<title>azurerm_network_interface.web_nic-&gt;azurerm_subnet.web-subnet</title>
+<path fill="none" stroke="black" d="M896.15,-112.79C861.21,-108.51 822.46,-103.66 786.96,-99 765.3,-96.15 742.04,-92.98 720.04,-89.91"/>
+<polygon fill="black" stroke="black" points="720.55,-86.45 710.16,-88.53 719.58,-93.38 720.55,-86.45"/>
+</g>
+<!-- azurerm_network_security_group.web_nsg -->
+<g id="node2" class="node">
+<title>azurerm_network_security_group.web_nsg</title>
+<polygon fill="none" stroke="black" points="750.96,-40 491.98,-40 491.98,-4 750.96,-4 750.96,-40"/>
+<text xml:space="preserve" text-anchor="middle" x="621.47" y="-17.8" font-family="sans-serif" font-size="14.00">azurerm_network_security_group.web_nsg</text>
+</g>
+<!-- azurerm_resource_group.my&#45;rg -->
+<g id="node5" class="node">
+<title>azurerm_resource_group.my-rg</title>
+<polygon fill="none" stroke="black" points="193.65,-90 0,-90 0,-54 193.65,-54 193.65,-90"/>
+<text xml:space="preserve" text-anchor="middle" x="96.82" y="-67.8" font-family="sans-serif" font-size="14.00">azurerm_resource_group.my-rg</text>
+</g>
+<!-- azurerm_network_security_group.web_nsg&#45;&gt;azurerm_resource_group.my&#45;rg -->
+<g id="edge3" class="edge">
+<title>azurerm_network_security_group.web_nsg-&gt;azurerm_resource_group.my-rg</title>
+<path fill="none" stroke="black" d="M491.54,-24.95C415.14,-27.85 316.58,-33.6 229.65,-45 216.71,-46.7 203.14,-48.94 189.83,-51.41"/>
+<polygon fill="black" stroke="black" points="189.39,-47.93 180.22,-53.24 190.7,-54.8 189.39,-47.93"/>
+</g>
+<!-- azurerm_network_security_rule.web_nsg_rule -->
+<g id="node3" class="node">
+<title>azurerm_network_security_rule.web_nsg_rule</title>
+<polygon fill="none" stroke="black" points="1145.86,-36 869.01,-36 869.01,0 1145.86,0 1145.86,-36"/>
+<text xml:space="preserve" text-anchor="middle" x="1007.44" y="-13.8" font-family="sans-serif" font-size="14.00">azurerm_network_security_rule.web_nsg_rule</text>
+</g>
+<!-- azurerm_network_security_rule.web_nsg_rule&#45;&gt;azurerm_network_security_group.web_nsg -->
+<g id="edge4" class="edge">
+<title>azurerm_network_security_rule.web_nsg_rule-&gt;azurerm_network_security_group.web_nsg</title>
+<path fill="none" stroke="black" d="M868.63,-19.44C834.08,-19.8 796.99,-20.18 762.34,-20.54"/>
+<polygon fill="black" stroke="black" points="762.66,-17.04 752.7,-20.64 762.73,-24.04 762.66,-17.04"/>
+</g>
+<!-- azurerm_public_ip.web_vm_publicip&#45;&gt;azurerm_resource_group.my&#45;rg -->
+<g id="edge5" class="edge">
+<title>azurerm_public_ip.web_vm_publicip-&gt;azurerm_resource_group.my-rg</title>
+<path fill="none" stroke="black" d="M258.53,-107.57C237.15,-102.84 214.01,-97.71 192.12,-92.87"/>
+<polygon fill="black" stroke="black" points="193.14,-89.51 182.62,-90.77 191.63,-96.35 193.14,-89.51"/>
+</g>
+<!-- azurerm_virtual_network.vnet -->
+<g id="node8" class="node">
+<title>azurerm_virtual_network.vnet</title>
+<polygon fill="none" stroke="black" points="435.75,-90 249.87,-90 249.87,-54 435.75,-54 435.75,-90"/>
+<text xml:space="preserve" text-anchor="middle" x="342.81" y="-67.8" font-family="sans-serif" font-size="14.00">azurerm_virtual_network.vnet</text>
+</g>
+<!-- azurerm_subnet.web&#45;subnet&#45;&gt;azurerm_virtual_network.vnet -->
+<g id="edge6" class="edge">
+<title>azurerm_subnet.web-subnet-&gt;azurerm_virtual_network.vnet</title>
+<path fill="none" stroke="black" d="M534.45,-74.76C506.87,-74.36 476.02,-73.91 447.32,-73.5"/>
+<polygon fill="black" stroke="black" points="447.58,-70 437.53,-73.36 447.48,-77 447.58,-70"/>
+</g>
+<!-- azurerm_subnet_network_security_group_association.web_nsg_association -->
+<g id="node7" class="node">
+<title>azurerm_subnet_network_security_group_association.web_nsg_association</title>
+<polygon fill="none" stroke="black" points="1227.91,-90 786.96,-90 786.96,-54 1227.91,-54 1227.91,-90"/>
+<text xml:space="preserve" text-anchor="middle" x="1007.44" y="-67.8" font-family="sans-serif" font-size="14.00">azurerm_subnet_network_security_group_association.web_nsg_association</text>
+</g>
+<!-- azurerm_subnet_network_security_group_association.web_nsg_association&#45;&gt;azurerm_network_security_group.web_nsg -->
+<g id="edge7" class="edge">
+<title>azurerm_subnet_network_security_group_association.web_nsg_association-&gt;azurerm_network_security_group.web_nsg</title>
+<path fill="none" stroke="black" d="M853.5,-53.51C831.17,-50.72 808.47,-47.83 786.96,-45 779,-43.95 770.83,-42.86 762.58,-41.75"/>
+<polygon fill="black" stroke="black" points="763.18,-38.3 752.8,-40.42 762.24,-45.24 763.18,-38.3"/>
+</g>
+<!-- azurerm_subnet_network_security_group_association.web_nsg_association&#45;&gt;azurerm_subnet.web&#45;subnet -->
+<g id="edge8" class="edge">
+<title>azurerm_subnet_network_security_group_association.web_nsg_association-&gt;azurerm_subnet.web-subnet</title>
+<path fill="none" stroke="black" d="M786.7,-74.29C763.34,-74.53 740.55,-74.77 719.73,-74.99"/>
+<polygon fill="black" stroke="black" points="719.86,-71.49 709.89,-75.09 719.93,-78.48 719.86,-71.49"/>
+</g>
+<!-- azurerm_virtual_network.vnet&#45;&gt;azurerm_resource_group.my&#45;rg -->
+<g id="edge9" class="edge">
+<title>azurerm_virtual_network.vnet-&gt;azurerm_resource_group.my-rg</title>
+<path fill="none" stroke="black" d="M249.57,-72C235.05,-72 219.94,-72 205.11,-72"/>
+<polygon fill="black" stroke="black" points="205.37,-68.5 195.37,-72 205.37,-75.5 205.37,-68.5"/>
+</g>
+</g>
+</svg>
