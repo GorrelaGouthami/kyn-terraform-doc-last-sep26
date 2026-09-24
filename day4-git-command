@@ -79,3 +79,16 @@ git branch
 git push origin subtract
 git push origin --all
 ##once push go to github and check the same
+#once you complete with the feature branch you need to merge it
+#first you need to switch to the branch where you want to merge using checkout command
+git branch
+git checkout main
+#run a merge sommand provide the branch name you want to merge
+##it will open in vi editro #press esc :wq this will save the file 
+git merge subtract
+#now in the main branch if you see calcy.py it contains the 4th line 
+cat calcy.py
+#finally push the change to remote
+git push origin --all
+###once push in the master branch check the calcy.py has the 4th line
+
