@@ -1,0 +1,14 @@
+#lets first create the environment varaibles. 
+  #before that we need to open gitbash
+  #lets cresate a dir
+ mkdir projectx
+cd projectx/
+  #inside the directory we will create some blank file
+touch DS_Store
+touch auth
+touch secret
+touch calcy.py
+#lets configure some global variables 
+git config --global user.name "gopal"
+git config --global user.email "gopal1409@gmail.com"
+git config --global --list
