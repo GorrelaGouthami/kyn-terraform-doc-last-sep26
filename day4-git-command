@@ -33,3 +33,11 @@ git add calcy.py
 git commit -m "added divide function"
 #git log will show all your commit so always give menaing message
  git log
+#lets generate the ssh key from the github terminal
+ssh-keygen -t rsa
+###once you run this commannd do not change anything just press enter enter enter this will create the key 
+##once create type cat 
+cat pathofthepublickey you will find in the output of the key
+##copy the whole key 
+#go to github extreme right last icon at the top click on it seeting-click on it 
+#access menu you will find ssh and gpg key click on it add ssh key give a name and paste it 
